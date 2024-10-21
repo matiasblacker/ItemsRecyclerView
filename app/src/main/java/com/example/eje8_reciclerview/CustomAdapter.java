@@ -1,7 +1,9 @@
 package com.example.eje8_reciclerview;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -22,9 +24,8 @@ public class CustomAdapter  extends RecyclerView.Adapter<CustomHolder> {
     @NonNull
     @Override
     public CustomHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new CustomHolder(LayoutInflater.from(context).inflate(R.layout.card_item,parent,false));
-
-
+        View view = LayoutInflater.from(context).inflate(R.layout.card_item, parent, false);
+        return new CustomHolder(view);
     }
 
     @Override
@@ -32,6 +33,20 @@ public class CustomAdapter  extends RecyclerView.Adapter<CustomHolder> {
         holder.imageView.setImageResource(customModelArrayList.get(position).getImage());
         holder.tvTitle.setText(customModelArrayList.get(position).getTitle());
         holder.tvDesc.setText(customModelArrayList.get(position).getDesc());
+
+        holder.cardItemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context,MainActivity2.class);
+
+                intent.putExtra("icon",customModelArrayList.get(position).getImage());
+                intent.putExtra("title",customModelArrayList.get(position).getTitle());
+                intent.putExtra("desc",customModelArrayList.get(position).getDesc());
+                context.startActivity(intent);
+
+            }
+        });
+
     }
 
     @Override

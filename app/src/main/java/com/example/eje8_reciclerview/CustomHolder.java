@@ -5,12 +5,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class CustomHolder extends RecyclerView.ViewHolder {
     ImageView imageView;
     TextView tvTitle;
     TextView tvDesc;
+    CardView cardItemView;
 
     public CustomHolder(@NonNull View itemView) {
         super(itemView);
@@ -18,6 +20,7 @@ public class CustomHolder extends RecyclerView.ViewHolder {
         imageView = itemView.findViewById(R.id.imageView);
         tvTitle = itemView.findViewById(R.id.tvTitle);
         tvDesc = itemView.findViewById(R.id.tvDesc);
+        cardItemView = itemView.findViewById(R.id.cardItemView);
 
     }
 }
